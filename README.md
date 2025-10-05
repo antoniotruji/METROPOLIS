@@ -1,4 +1,4 @@
-# Dual World Digital Twins - NASA Hackathon 2025
+  # METROPOLIS - NASA Hackathon 2025
 
 A revolutionary space-themed web application featuring dual digital twins for Earth urban management and Mars colony development, integrated with NASA satellite data and AI-powered Large Language Models (LLMs).
 
