@@ -1,0 +1,109 @@
+.environmental-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.pollutants-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.pollutant-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.pollutant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.pollutant-name {
+  font-weight: 600;
+  color: var(--gray-700);
+  font-size: var(--font-size-sm);
+}
+
+.pollutant-value {
+  font-weight: 600;
+  color: var(--gray-900);
+  font-size: var(--font-size-base);
+}
+
+.pollutant-unit {
+  font-size: var(--font-size-xs);
+  color: var(--gray-600);
+  font-weight: 400;
+}
+
+.pollutant-bar {
+  height: 6px;
+  background: var(--gray-200);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.pollutant-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width var(--transition-slow);
+}
+
+.pollutant-status {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.weather-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--gray-50);
+  border-radius: var(--border-radius);
+}
+
+.weather-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: var(--border-radius);
+  color: var(--primary-blue);
+}
+
+.weather-info {
+  flex: 1;
+}
+
+.weather-label {
+  font-size: var(--font-size-xs);
+  color: var(--gray-600);
+  margin-bottom: 2px;
+}
+
+.weather-value {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+@media (max-width: 1024px) {
+  .pollutants-grid,
+  .weather-grid {
+    grid-template-columns: 1fr;
+  }
+}

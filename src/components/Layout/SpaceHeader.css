@@ -1,0 +1,217 @@
+.space-header {
+  background: linear-gradient(135deg, rgba(26, 35, 126, 0.9), rgba(10, 10, 10, 0.95));
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+  padding: 15px 30px;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-icon {
+  padding: 10px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.2), transparent);
+  border-radius: 50%;
+  border: 1px solid var(--neon-blue);
+}
+
+.rotating-satellite {
+  color: var(--neon-blue);
+  animation: satellite-orbit 3s linear infinite;
+}
+
+@keyframes satellite-orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.logo-text h1 {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.view-selector {
+  display: flex;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.view-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.view-btn:hover::before {
+  left: 100%;
+}
+
+.view-btn:hover {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+.earth-btn.active {
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.3), rgba(0, 229, 255, 0.2));
+  border-color: var(--earth-blue);
+  color: white;
+  box-shadow: 0 0 20px rgba(25, 118, 210, 0.4);
+}
+
+.mars-btn.active {
+  background: linear-gradient(135deg, rgba(205, 92, 92, 0.3), rgba(255, 109, 0, 0.2));
+  border-color: var(--mars-red);
+  color: white;
+  box-shadow: 0 0 20px rgba(205, 92, 92, 0.4);
+}
+
+.dual-btn.active {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.3), rgba(213, 0, 249, 0.2));
+  border-color: var(--neon-purple);
+  color: white;
+  box-shadow: 0 0 20px rgba(213, 0, 249, 0.4);
+}
+
+.mars-icon {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--mars-red);
+}
+
+.status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--neon-green);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--neon-green);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .header-content {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .logo-text h1 {
+    font-size: 20px;
+  }
+  
+  .subtitle {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .space-header {
+    padding: 10px 20px;
+  }
+  
+  .view-selector {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .view-btn {
+    padding: 10px 16px;
+    font-size: 11px;
+  }
+  
+  .status-indicators {
+    gap: 15px;
+  }
+}

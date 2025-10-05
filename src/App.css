@@ -1,0 +1,1771 @@
+/* Space Theme Variables */
+:root {
+  --space-black: #0a0a0a;
+  --space-blue: #1a237e;
+  --space-purple: #3f51b5;
+  --neon-blue: #00e5ff;
+  --neon-green: #00ff88;
+  --neon-orange: #ff6d00;
+  --neon-purple: #d500f9;
+  --mars-red: #cd5c5c;
+  --earth-blue: #1976d2;
+  --space-gray: #263238;
+  --dark-surface: #1a1a1a;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Orbitron', monospace;
+  background: var(--space-black);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.app.space-theme {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, var(--space-blue) 0%, var(--space-black) 70%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated Space Background */
+.space-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, var(--neon-blue), transparent),
+    radial-gradient(2px 2px at 40px 70px, var(--neon-green), transparent),
+    radial-gradient(1px 1px at 90px 40px, var(--neon-purple), transparent),
+    radial-gradient(1px 1px at 130px 80px, var(--neon-orange), transparent),
+    radial-gradient(2px 2px at 160px 30px, var(--neon-blue), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: sparkle 3s linear infinite;
+}
+
+.space-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background-image: 
+    linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 10s linear infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Header Styles */
+.space-header {
+  background: linear-gradient(135deg, rgba(26, 35, 126, 0.9), rgba(10, 10, 10, 0.95));
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+  padding: 15px 30px;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-icon {
+  padding: 10px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.2), transparent);
+  border-radius: 50%;
+  border: 1px solid var(--neon-blue);
+}
+
+.rotating-satellite {
+  font-size: 24px;
+  animation: satellite-orbit 3s linear infinite;
+}
+
+@keyframes satellite-orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.logo-text h1 {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.view-selector {
+  display: flex;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.view-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+.earth-btn.active {
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.3), rgba(0, 229, 255, 0.2));
+  border-color: var(--earth-blue);
+  color: white;
+  box-shadow: 0 0 20px rgba(25, 118, 210, 0.4);
+}
+
+.mars-btn.active {
+  background: linear-gradient(135deg, rgba(205, 92, 92, 0.3), rgba(255, 109, 0, 0.2));
+  border-color: var(--mars-red);
+  color: white;
+  box-shadow: 0 0 20px rgba(205, 92, 92, 0.4);
+}
+
+.dual-btn.active {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.3), rgba(213, 0, 249, 0.2));
+  border-color: var(--neon-purple);
+  color: white;
+  box-shadow: 0 0 20px rgba(213, 0, 249, 0.4);
+}
+
+.status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--neon-green);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--neon-green);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+/* Main Container */
+.main-container {
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+  min-height: calc(100vh - 80px);
+}
+
+/* Dual View - Compact Summary */
+.dual-view-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 30px;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 400px; /* Espacio para el horizonte curvo */
+  position: relative;
+}
+
+/* Horizonte Planetario con Curvatura (Silueta del Planeta) */
+.dual-view-container::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 400px;
+  background: 
+    /* Cielo marciano degradado */
+    linear-gradient(180deg, 
+      transparent 0%,
+      rgba(26, 10, 15, 0.3) 20%,
+      rgba(61, 24, 32, 0.6) 40%,
+      rgba(139, 69, 19, 0.8) 70%,
+      rgba(205, 133, 63, 1) 100%
+    );
+  /* Forma curva del planeta usando border-radius */
+  border-radius: 50% 50% 0 0 / 35% 35% 0 0;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: 
+    inset 0 60px 100px rgba(0, 0, 0, 0.7),
+    inset 0 -30px 80px rgba(255, 180, 100, 0.15),
+    0 -10px 50px rgba(205, 133, 63, 0.3),
+    inset -100px 0 150px rgba(0, 0, 0, 0.4),
+    inset 100px 0 150px rgba(0, 0, 0, 0.4);
+  animation: horizon-glow 10s ease-in-out infinite;
+}
+
+@keyframes horizon-glow {
+  0%, 100% {
+    box-shadow: 
+      inset 0 60px 100px rgba(0, 0, 0, 0.7),
+      inset 0 -30px 80px rgba(255, 180, 100, 0.15),
+      0 -10px 50px rgba(205, 133, 63, 0.3),
+      inset -100px 0 150px rgba(0, 0, 0, 0.4),
+      inset 100px 0 150px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 
+      inset 0 60px 100px rgba(0, 0, 0, 0.7),
+      inset 0 -30px 80px rgba(255, 200, 120, 0.25),
+      0 -10px 60px rgba(205, 133, 63, 0.4),
+      inset -100px 0 150px rgba(0, 0, 0, 0.3),
+      inset 100px 0 150px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Montañas en el horizonte curvo */
+.dual-view-container::before {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 250px;
+  background: 
+    /* Montaña izquierda */
+    radial-gradient(ellipse 350px 140px at 15% 100%, rgba(101, 67, 33, 0.9) 0%, transparent 70%),
+    /* Montaña central grande (Olympus Mons) */
+    radial-gradient(ellipse 500px 200px at 50% 100%, rgba(80, 50, 20, 0.95) 0%, transparent 75%),
+    /* Montaña derecha */
+    radial-gradient(ellipse 380px 150px at 85% 100%, rgba(101, 67, 33, 0.9) 0%, transparent 70%),
+    /* Colinas lejanas */
+    radial-gradient(ellipse 650px 90px at 30% 100%, rgba(139, 69, 19, 0.6) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 100px at 70% 100%, rgba(160, 82, 45, 0.6) 0%, transparent 60%);
+  /* Curvatura que sigue la forma del planeta */
+  border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+  clip-path: ellipse(50% 100% at 50% 100%);
+  pointer-events: none;
+  z-index: -1;
+  animation: mountain-parallax 30s ease-in-out infinite;
+}
+
+@keyframes mountain-parallax {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.02); }
+}
+
+.twin-summary {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.twin-summary:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 229, 255, 0.3);
+}
+
+.earth-summary {
+  border-color: var(--earth-blue);
+  box-shadow: 0 0 30px rgba(25, 118, 210, 0.2);
+}
+
+.earth-summary:hover {
+  box-shadow: 0 15px 40px rgba(25, 118, 210, 0.4);
+}
+
+.mars-summary {
+  border-color: var(--mars-red);
+  box-shadow: 0 0 30px rgba(205, 92, 92, 0.2);
+}
+
+.mars-summary:hover {
+  box-shadow: 0 15px 40px rgba(205, 92, 92, 0.4);
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.summary-header .planet-icon {
+  font-size: 40px;
+  margin-right: 15px;
+}
+
+.summary-header h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--neon-blue);
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+}
+
+.mars-summary .summary-header h3 {
+  color: var(--neon-orange);
+}
+
+.summary-header p {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 5px 0 0 0;
+}
+
+.expand-btn {
+  font-size: 24px;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.twin-summary:hover .expand-btn {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.quick-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.mini-metric {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mini-metric .metric-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.mini-metric .metric-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.summary-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.good {
+  background: var(--neon-green);
+}
+
+/* Detail Views */
+.detail-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.back-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
+}
+
+.detail-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--neon-blue);
+  font-family: 'Orbitron', monospace;
+}
+
+.mars-detail .detail-header h2 {
+  color: var(--neon-orange);
+}
+
+.detail-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  flex: 1;
+  height: calc(100vh - 200px);
+}
+
+/* Interactive Maps */
+.interactive-map {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.earth-map {
+  border-color: var(--earth-blue);
+  box-shadow: 0 0 30px rgba(25, 118, 210, 0.2);
+}
+
+.mars-map {
+  border-color: var(--mars-red);
+  box-shadow: 0 0 30px rgba(205, 92, 92, 0.2);
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.map-header h3 {
+  font-size: 18px;
+  color: var(--neon-blue);
+  font-family: 'Orbitron', monospace;
+}
+
+.mars-map .map-header h3 {
+  color: var(--neon-orange);
+}
+
+.data-sources {
+  display: flex;
+  gap: 10px;
+}
+
+.source {
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  font-size: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.source.active {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 50, 100, 0.3), rgba(0, 20, 40, 0.6));
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  min-height: 400px;
+}
+
+/* Simple 2D Maps - No icons, clean topography */
+.city-map-display, .mars-map-display {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+/* Simple Earth City Map */
+.simple-city-map {
+  width: 100%;
+  height: 100%;
+  background: #f0f8ff;
+  position: relative;
+}
+
+.city-block {
+  position: absolute;
+  background: #d3d3d3;
+  border: 1px solid #a9a9a9;
+  border-radius: 3px;
+}
+
+.simple-road {
+  position: absolute;
+  background: #696969;
+  border: 1px solid #2f4f4f;
+}
+
+.simple-road.horizontal {
+  width: 100%;
+  height: 3%;
+}
+
+.simple-road.vertical {
+  width: 2%;
+  height: 100%;
+}
+
+.park-zone {
+  position: absolute;
+  background: #32cd32;
+  border: 1px solid #228b22;
+  border-radius: 50%;
+}
+
+.water-zone {
+  position: absolute;
+  background: #4682b4;
+  border: 1px solid #2f4f4f;
+  border-radius: 30%;
+}
+
+/* Simple Mars Map */
+.simple-mars-map {
+  width: 100%;
+  height: 100%;
+  background: #cd853f;
+  position: relative;
+}
+
+.mars-terrain-feature {
+  position: absolute;
+  border-radius: 8px;
+}
+
+.mars-terrain-feature.crater {
+  background: #8b4513;
+  border: 1px solid #654321;
+  border-radius: 50%;
+}
+
+.mars-terrain-feature.ridge {
+  background: #a0522d;
+  border: 1px solid #8b4513;
+  border-radius: 20px;
+  transform: rotate(-10deg);
+}
+
+.mars-terrain-feature.dunes {
+  background: #daa520;
+  border: 1px solid #b8860b;
+  border-radius: 40%;
+}
+
+.mars-terrain-feature.rocks {
+  background: #696969;
+  border: 1px solid #2f4f4f;
+  border-radius: 20%;
+}
+
+.mars-terrain-feature.channel {
+  background: #2f4f4f;
+  border: 1px solid #1c1c1c;
+  border-radius: 10px;
+  transform: rotate(5deg);
+}
+
+/* Mars Storm Visualization Styles */
+.mars-storm-container {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #8b4513, #a0522d);
+  border-radius: 15px;
+  padding: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.storm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  color: white;
+}
+
+.storm-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff6347;
+}
+
+.storm-progress {
+  font-size: 12px;
+  color: #ffd700;
+  font-weight: 500;
+}
+
+.storm-canvas-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.mars-storm-canvas {
+  border: 2px solid #654321;
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    inset 0 0 20px rgba(139, 69, 19, 0.3);
+  max-width: 100%;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+.mars-storm-canvas:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    inset 0 0 25px rgba(139, 69, 19, 0.4);
+}
+
+.storm-info-overlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.storm-position {
+  color: #00ff00;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.storm-status {
+  color: #ffd700;
+  font-weight: 500;
+}
+
+.image-status {
+  color: #00ff00;
+  font-size: 10px;
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+.storm-description {
+  margin-top: 10px;
+  text-align: center;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  backdrop-filter: blur(5px);
+}
+
+.storm-description p {
+  margin: 0;
+  font-size: 11px;
+  color: white;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Simple Data Overlays */
+.simple-data-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.data-point {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #000;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.data-text {
+  color: #333;
+  text-align: center;
+}
+
+.rover-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ff4500;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.rover-text {
+  position: absolute;
+  top: 15px;
+  left: -25px;
+  width: 60px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+/* Enhanced sensor zones for OSM style */
+.sensor-zone, .colony-zone {
+  z-index: 20;
+  border: 2px solid rgba(0, 229, 255, 0.8);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px;
+  backdrop-filter: blur(5px);
+  min-width: 100px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 11px;
+  transition: all 0.3s ease;
+}
+
+.colony-zone {
+  border-color: rgba(205, 92, 92, 0.8);
+  background: rgba(255, 245, 238, 0.9);
+}
+
+.sensor-zone:hover, .colony-zone:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.zone-marker {
+  font-size: 20px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.zone-data {
+  font-size: 9px;
+  line-height: 1.2;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Enhanced data overlays */
+.data-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 25;
+}
+
+.live-update {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 0, 0, 0.9);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Rover enhancements for OSM style */
+.active-rover {
+  position: absolute;
+  z-index: 30;
+  text-align: center;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.4));
+  animation: rover-movement 12s ease-in-out infinite;
+}
+
+.rover-icon {
+  font-size: 18px;
+  display: block;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.rover-label {
+  font-size: 8px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-top: 3px;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes rover-movement {
+  0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25% { transform: translateX(10px) translateY(-5px) rotate(3deg); }
+  50% { transform: translateX(-6px) translateY(6px) rotate(-2deg); }
+  75% { transform: translateX(4px) translateY(-3px) rotate(1deg); }
+}
+
+/* Weather and atmosphere overlays */
+.weather-overlay, .atmosphere-overlay {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 12px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  z-index: 25;
+}
+
+.atmosphere-overlay {
+  background: rgba(139, 69, 19, 0.9);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.weather-icon {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.weather-data {
+  font-size: 9px;
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #333;
+}
+
+.atmosphere-overlay .weather-data {
+  color: white;
+}
+
+/* Resource markers for Mars */
+.resource-marker {
+  position: absolute;
+  z-index: 25;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.resource-icon {
+  font-size: 14px;
+  animation: resource-pulse 3s ease-in-out infinite;
+  display: block;
+}
+
+.resource-label {
+  font-size: 7px;
+  color: white;
+  margin-top: 2px;
+  font-weight: bold;
+}
+
+@keyframes resource-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Enhanced sensor zones */
+.sensor-zone {
+  z-index: 10;
+  border: 2px solid rgba(0, 229, 255, 0.6);
+  border-radius: 12px;
+  background: rgba(0, 229, 255, 0.1);
+  padding: 8px;
+  backdrop-filter: blur(5px);
+  min-width: 100px;
+  text-align: center;
+}
+
+.colony-zone {
+  z-index: 10;
+  border: 2px solid rgba(205, 92, 92, 0.6);
+  border-radius: 12px;
+  background: rgba(205, 92, 92, 0.1);
+  padding: 8px;
+  backdrop-filter: blur(5px);
+  min-width: 100px;
+  text-align: center;
+}
+
+.sensor-zone:hover, .colony-zone:hover {
+  background: rgba(0, 229, 255, 0.2);
+  border-color: rgba(0, 229, 255, 0.9);
+  transform: scale(1.05);
+}
+
+.colony-zone:hover {
+  background: rgba(205, 92, 92, 0.2);
+  border-color: rgba(205, 92, 92, 0.9);
+}
+
+/* Colony infrastructure */
+.habitat-dome {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(173, 216, 230, 0.4), rgba(173, 216, 230, 0.1));
+  border: 2px solid rgba(173, 216, 230, 0.7);
+  border-radius: 50%;
+  animation: dome-pulse 4s ease-in-out infinite;
+}
+
+.greenhouse-structure {
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  width: 60px;
+  height: 25px;
+  background: linear-gradient(45deg, rgba(144, 238, 144, 0.4), rgba(144, 238, 144, 0.2));
+  border: 2px solid rgba(144, 238, 144, 0.8);
+  border-radius: 30px;
+  animation: greenhouse-glow 5s ease-in-out infinite;
+}
+
+.mining-equipment {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 35px;
+  height: 35px;
+  background: conic-gradient(from 0deg, #FFD700, #FFA500, #FFD700);
+  border-radius: 5px;
+  animation: equipment-rotate 8s linear infinite;
+}
+
+.rover-tracks {
+  position: absolute;
+  top: -5px;
+  left: -30px;
+  width: 80px;
+  height: 3px;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.3) 5px,
+    transparent 5px,
+    transparent 10px
+  );
+}
+
+@keyframes dome-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes greenhouse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(144, 238, 144, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(144, 238, 144, 0.7); }
+}
+
+@keyframes equipment-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Active rovers */
+.active-rover {
+  position: absolute;
+  z-index: 15;
+  animation: rover-movement 10s ease-in-out infinite;
+  text-align: center;
+}
+
+.rover-icon {
+  font-size: 20px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+  display: block;
+}
+
+.rover-label {
+  font-size: 9px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-top: 3px;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.rover-trail {
+  position: absolute;
+  top: 20px;
+  left: -25px;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: trail-fade 3s ease-out infinite;
+}
+
+.flight-path {
+  position: absolute;
+  top: -15px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: flight-circle 6s linear infinite;
+}
+
+@keyframes rover-movement {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(8px) translateY(-3px); }
+  50% { transform: translateX(-5px) translateY(5px); }
+  75% { transform: translateX(3px) translateY(-2px); }
+}
+
+@keyframes trail-fade {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes flight-circle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Weather overlays */
+.weather-overlay, .atmosphere-overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 15px;
+  border-radius: 10px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  z-index: 20;
+}
+
+.weather-icon {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.weather-data {
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* Pollution effects */
+.pollution-cloud {
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  background: radial-gradient(ellipse, rgba(139, 69, 19, 0.5), rgba(139, 69, 19, 0.2));
+  border-radius: 50%;
+  animation: pollution-drift 8s ease-in-out infinite;
+  z-index: 4;
+}
+
+@keyframes pollution-drift {
+  0%, 100% { transform: translateX(0) scale(1); opacity: 0.6; }
+  50% { transform: translateX(15px) scale(1.2); opacity: 0.8; }
+}
+
+.map-zone {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.map-zone:hover {
+  transform: scale(1.1);
+}
+
+.zone-marker {
+  font-size: 24px;
+  margin-bottom: 5px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.zone-data {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 10px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  line-height: 1.2;
+}
+
+.data-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.live-update {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 0, 0, 0.8);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 10px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+.sensor-ping, .rover-ping {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--neon-blue);
+  border-radius: 50%;
+  animation: ping 2s infinite;
+}
+
+.rover-ping {
+  background: var(--mars-red);
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.map-metrics {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.live-metric {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.metric-stream {
+  color: var(--neon-green);
+  font-family: 'Courier New', monospace;
+  animation: typewriter 3s linear infinite;
+}
+
+/* LLM Chat */
+.llm-chat {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.earth-chat {
+  border-color: var(--earth-blue);
+  box-shadow: 0 0 30px rgba(25, 118, 210, 0.2);
+}
+
+.mars-chat {
+  border-color: var(--mars-red);
+  box-shadow: 0 0 30px rgba(205, 92, 92, 0.2);
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-header h3 {
+  font-size: 16px;
+  color: var(--neon-blue);
+  font-family: 'Orbitron', monospace;
+}
+
+.mars-chat .chat-header h3 {
+  color: var(--neon-orange);
+}
+
+.ai-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--neon-green);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 500px;
+  padding-right: 10px;
+}
+
+/* Custom scrollbar for chat messages */
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: var(--neon-blue);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.mars-chat .chat-messages::-webkit-scrollbar-thumb {
+  background: var(--mars-red);
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green);
+}
+
+.message {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.message.assistant {
+  background: rgba(0, 229, 255, 0.1);
+  padding: 12px;
+  border-radius: 12px;
+  border-left: 3px solid var(--neon-blue);
+}
+
+.mars-chat .message.assistant {
+  background: rgba(205, 92, 92, 0.1);
+  border-left-color: var(--mars-red);
+}
+
+.ai-icon {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.message-content {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.message.user {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 12px;
+  border-right: 3px solid var(--neon-green);
+  margin-left: 30px;
+}
+
+.user-icon {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.message.typing {
+  opacity: 0.8;
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 5px 0;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-blue);
+  animation: typing 1.4s infinite;
+}
+
+.mars-chat .typing-indicator span {
+  background: var(--neon-orange);
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.status-dot.thinking {
+  background: var(--neon-orange);
+  animation: pulse 1s infinite;
+}
+
+.chat-input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 12px 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: white;
+  font-size: 13px;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.send-btn {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 13px;
+}
+
+.send-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+}
+
+.send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   HORIZONTE PLANETARIO - EFECTOS ADICIONALES
+   ======================================== */
+
+/* Estrellas en el cielo del horizonte */
+@keyframes twinkle-stars {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.dual-view-container .twin-summary:first-child::after {
+  content: '✦';
+  position: absolute;
+  bottom: 250px;
+  left: 10%;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  animation: twinkle-stars 3s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dual-view-container .twin-summary:first-child::before {
+  content: '✦';
+  position: absolute;
+  bottom: 280px;
+  left: 25%;
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  animation: twinkle-stars 4s ease-in-out infinite 0.5s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dual-view-container .twin-summary:last-child::after {
+  content: '✦';
+  position: absolute;
+  bottom: 270px;
+  right: 15%;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  animation: twinkle-stars 3.5s ease-in-out infinite 1s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dual-view-container .twin-summary:last-child::before {
+  content: '✦';
+  position: absolute;
+  bottom: 300px;
+  right: 30%;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  animation: twinkle-stars 2.5s ease-in-out infinite 1.5s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Atmósfera brillante en el horizonte */
+@keyframes atmosphere-pulse {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: translateX(-50%) scaleY(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: translateX(-50%) scaleY(1.05);
+  }
+}
+
+.dual-view-container .twin-summary {
+  position: relative;
+}
+
+/* Brillo atmosférico adicional */
+.main-container {
+  position: relative;
+}
+
+/* Resplandor en la curvatura del horizonte planetario */
+.main-container .dual-view-container {
+  position: relative;
+}
+
+.main-container .dual-view-container::after {
+  /* Añadir resplandor en los bordes de la curvatura */
+  box-shadow: 
+    inset 0 60px 100px rgba(0, 0, 0, 0.7),
+    inset 0 -30px 80px rgba(255, 180, 100, 0.15),
+    0 -10px 50px rgba(205, 133, 63, 0.3),
+    inset -100px 0 150px rgba(0, 0, 0, 0.4),
+    inset 100px 0 150px rgba(0, 0, 0, 0.4);
+  animation: horizon-glow 10s ease-in-out infinite;
+}
+
+@keyframes horizon-glow {
+  0%, 100% {
+    box-shadow: 
+      inset 0 60px 100px rgba(0, 0, 0, 0.7),
+      inset 0 -30px 80px rgba(255, 180, 100, 0.15),
+      0 -10px 50px rgba(205, 133, 63, 0.3),
+      inset -100px 0 150px rgba(0, 0, 0, 0.4),
+      inset 100px 0 150px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 
+      inset 0 60px 100px rgba(0, 0, 0, 0.7),
+      inset 0 -30px 80px rgba(255, 200, 120, 0.25),
+      0 -10px 60px rgba(205, 133, 63, 0.4),
+      inset -100px 0 150px rgba(0, 0, 0, 0.3),
+      inset 100px 0 150px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Efecto de borde luminoso en la curvatura */
+.dual-view-container {
+  position: relative;
+}
+
+.dual-view-container::after {
+  /* Línea de luz en el horizonte curvo */
+  background: 
+    linear-gradient(180deg, 
+      transparent 0%,
+      rgba(26, 10, 15, 0.3) 15%,
+      rgba(61, 24, 32, 0.6) 35%,
+      rgba(139, 69, 19, 0.85) 65%,
+      /* Línea brillante en el horizonte */
+      rgba(255, 180, 100, 0.3) 85%,
+      rgba(205, 133, 63, 1) 90%,
+      rgba(180, 100, 50, 1) 100%
+    );
+}
+
+/* Cráteres y textura en la superficie del planeta */
+@keyframes crater-shadow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+/* Textura de superficie planetaria */
+.dual-view-container::before {
+  background: 
+    /* Montañas con más detalle */
+    radial-gradient(ellipse 350px 140px at 15% 100%, rgba(101, 67, 33, 0.9) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 200px at 50% 100%, rgba(80, 50, 20, 0.95) 0%, transparent 75%),
+    radial-gradient(ellipse 380px 150px at 85% 100%, rgba(101, 67, 33, 0.9) 0%, transparent 70%),
+    /* Colinas lejanas */
+    radial-gradient(ellipse 650px 90px at 30% 100%, rgba(139, 69, 19, 0.6) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 100px at 70% 100%, rgba(160, 82, 45, 0.6) 0%, transparent 60%),
+    /* Cráteres */
+    radial-gradient(circle 40px at 25% 95%, rgba(60, 40, 20, 0.5) 0%, transparent 70%),
+    radial-gradient(circle 30px at 55% 92%, rgba(70, 45, 25, 0.4) 0%, transparent 65%),
+    radial-gradient(circle 35px at 75% 94%, rgba(65, 42, 22, 0.45) 0%, transparent 68%);
+  animation: mountain-parallax 30s ease-in-out infinite, crater-shadow 15s ease-in-out infinite;
+}
+
+/* Atmósfera difusa en la curvatura */
+.main-container .dual-view-container {
+  background: 
+    /* Resplandor atmosférico que sigue la curvatura */
+    radial-gradient(ellipse 90% 50% at 50% 100%, 
+      rgba(255, 180, 100, 0.12) 0%,
+      rgba(255, 150, 80, 0.08) 30%,
+      transparent 60%
+    ),
+    /* Neblina en los laterales */
+    radial-gradient(ellipse 40% 80% at 0% 100%, 
+      rgba(139, 69, 19, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(ellipse 40% 80% at 100% 100%, 
+      rgba(205, 92, 92, 0.08) 0%,
+      transparent 50%
+    );
+}
+
+/* Planets Comparison Section - Full width in second row */
+.planets-comparison-section {
+  grid-column: 1 / -1; /* Ocupa las dos columnas */
+  width: 100%;
+  margin-top: 20px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.planets-comparison-section::before {
+  display: none;
+}
+
+.comparison-header {
+  display: none;
+}
+
+.comparison-image-wrapper {
+  display: none;
+}
+
+.comparison-image {
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+  filter: brightness(1.2) contrast(1.15);
+  mix-blend-mode: screen; /* Esto ayuda a eliminar el fondo negro */
+  background: transparent;
+  opacity: 0.85; /* Transparencia para fundirse con el fondo */
+}
+
+.comparison-image:hover {
+  transform: scale(1.02);
+  opacity: 0.95; /* Más visible al hacer hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .planets-comparison-section {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .planets-comparison-section {
+    margin-top: 10px;
+  }
+  
+  .comparison-image {
+    filter: brightness(1.1) contrast(1.1);
+  }
+}

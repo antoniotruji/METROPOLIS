@@ -1,0 +1,81 @@
+.mars-twin {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(205, 92, 92, 0.1), rgba(255, 109, 0, 0.05));
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.mars-twin.active {
+  transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(205, 92, 92, 0.4);
+}
+
+.mars-twin .twin-header {
+  padding: 25px;
+  background: linear-gradient(135deg, rgba(205, 92, 92, 0.2), rgba(255, 109, 0, 0.1));
+  border-bottom: 1px solid rgba(205, 92, 92, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mars-planet {
+  font-size: 32px;
+  animation: mars-pulse 3s ease-in-out infinite;
+}
+
+@keyframes mars-pulse {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.1); filter: brightness(1.2); }
+}
+
+.mars-twin .header-title h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--neon-orange);
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 1px;
+}
+
+.mars-twin .data-source {
+  color: var(--mars-red);
+}
+
+.mars-twin .tab-btn.active {
+  background: rgba(205, 92, 92, 0.2);
+}
+
+.mars-twin .tab-btn.active::after {
+  background: var(--mars-red);
+}
+
+.mars-twin .tab-btn:hover {
+  background: rgba(205, 92, 92, 0.1);
+}
+
+.mars-twin .metric-card {
+  border-color: rgba(205, 92, 92, 0.2);
+}
+
+.mars-twin .metric-card:hover {
+  box-shadow: 0 5px 15px rgba(205, 92, 92, 0.2);
+}
+
+.mars-twin .temperature .metric-icon { background: rgba(0, 229, 255, 0.2); }
+.mars-twin .pressure .metric-icon { background: rgba(255, 109, 0, 0.2); }
+.mars-twin .rovers .metric-icon { background: rgba(205, 92, 92, 0.2); }
+.mars-twin .structures .metric-icon { background: rgba(255, 193, 7, 0.2); }
+
+/* Mars-specific animations */
+@keyframes mars-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(205, 92, 92, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(205, 92, 92, 0.5); }
+}
+
+.mars-twin:hover {
+  animation: mars-glow 2s ease-in-out infinite;
+}

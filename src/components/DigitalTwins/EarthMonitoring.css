@@ -1,0 +1,570 @@
+.earth-monitoring {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.monitoring-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  height: 100%;
+}
+
+.sensor-panel, .satellite-panel, .map-panel, .infrastructure-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--neon-blue);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sensor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sensor-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.sensor-item.good { border-left-color: var(--neon-green); }
+.sensor-item.moderate { border-left-color: var(--neon-orange); }
+.sensor-item.poor { border-left-color: #ff4444; }
+.sensor-item.excellent { border-left-color: #00ff88; }
+
+.sensor-item:hover {
+  background: rgba(0, 229, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.sensor-icon {
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.sensor-info {
+  flex: 1;
+}
+
+.sensor-type {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+}
+
+.sensor-location {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+}
+
+.sensor-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--neon-blue);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.good { background: var(--neon-green); }
+.status-indicator.moderate { background: var(--neon-orange); }
+.status-indicator.poor { background: #ff4444; }
+.status-indicator.excellent { background: #00ff88; }
+
+.satellite-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.satellite-item {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+.sat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sat-name {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+}
+
+.sat-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--neon-green);
+}
+
+.sat-status .status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--neon-green);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+.sat-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.city-map {
+  height: 200px;
+  position: relative;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 50, 100, 0.3), rgba(0, 20, 40, 0.5));
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 100%;
+  gap: 2px;
+  padding: 10px;
+}
+
+.zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.zone:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.green-zone { border: 1px solid var(--neon-green); }
+.residential { border: 1px solid var(--neon-blue); }
+.commercial { border: 1px solid var(--neon-orange); }
+.industrial { border: 1px solid var(--neon-purple); }
+
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hotspot {
+  position: absolute;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  animation: hotspot-pulse 2s infinite;
+}
+
+.hotspot.pollution {
+  top: 20%;
+  right: 15%;
+  background: rgba(255, 68, 68, 0.3);
+  border: 1px solid #ff4444;
+}
+
+.hotspot.traffic {
+  bottom: 30%;
+  left: 20%;
+  background: rgba(255, 159, 0, 0.3);
+  border: 1px solid var(--neon-orange);
+}
+
+.hotspot.green {
+  top: 60%;
+  right: 25%;
+  background: rgba(0, 255, 136, 0.3);
+  border: 1px solid var(--neon-green);
+}
+
+@keyframes hotspot-pulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.infrastructure-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.infra-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.infra-item:hover {
+  background: rgba(0, 229, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.infra-item svg {
+  color: var(--neon-blue);
+}
+
+.infra-item span {
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.infra-status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.infra-status.good {
+  background: rgba(0, 255, 136, 0.2);
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
+}
+
+.infra-status.moderate {
+  background: rgba(255, 159, 0, 0.2);
+  color: var(--neon-orange);
+  border: 1px solid var(--neon-orange);
+}
+
+/* Basic styles for Mars and Earth monitoring components */
+
+.mars-monitoring, .earth-llm, .mars-llm {
+  padding: 20px;
+  color: white;
+}
+
+.monitoring-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.rover-panel, .environment-panel {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(205, 92, 92, 0.3);
+}
+
+.rover-panel h3, .environment-panel h3 {
+  margin-bottom: 15px;
+  color: var(--neon-orange);
+}
+
+.rover-item, .env-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 8px 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.rover-status.active {
+  color: var(--neon-green);
+  font-weight: bold;
+}
+
+.rover-status.maintenance {
+  color: var(--neon-orange);
+  font-weight: bold;
+}
+
+/* Earth LLM Styles */
+.ai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(0, 229, 255, 0.1);
+  border-radius: 10px;
+}
+
+.ai-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ai-title h3 {
+  margin: 0;
+  color: var(--neon-blue);
+}
+
+.ai-title p {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.status-dot.active {
+  width: 8px;
+  height: 8px;
+  background: var(--neon-green);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+.quick-actions {
+  margin: 20px 0;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: rgba(0, 229, 255, 0.1);
+  border-color: var(--neon-blue);
+}
+
+.recommendations-panel {
+  margin: 20px 0;
+}
+
+.recommendation-card {
+  padding: 15px;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border-left: 3px solid var(--neon-blue);
+}
+
+.recommendation-card.high {
+  border-left-color: var(--neon-orange);
+}
+
+.rec-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.priority-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.priority-badge.high {
+  background: rgba(255, 109, 0, 0.2);
+  color: var(--neon-orange);
+}
+
+.priority-badge.medium {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.chat-section {
+  margin-top: 20px;
+}
+
+.chat-messages {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+.message {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.message.assistant {
+  background: rgba(0, 229, 255, 0.1);
+}
+
+.message.user {
+  background: rgba(0, 255, 136, 0.1);
+  justify-content: flex-end;
+}
+
+.chat-input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input, .mars-chat-input {
+  flex: 1;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+}
+
+.send-btn, .mars-send-btn {
+  padding: 10px 15px;
+  background: var(--neon-blue);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mars LLM Styles */
+.mars-llm .ai-header {
+  background: rgba(205, 92, 92, 0.1);
+}
+
+.mars-llm .ai-header h3 {
+  color: var(--neon-orange);
+}
+
+.mars-rec-card {
+  padding: 15px;
+  margin: 10px 0;
+  background: rgba(205, 92, 92, 0.1);
+  border-radius: 10px;
+  border-left: 3px solid var(--mars-red);
+}
+
+.mars-chat {
+  margin-top: 20px;
+}
+
+.chat-message {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.typing {
+  display: flex;
+  gap: 4px;
+}
+
+.typing span {
+  width: 6px;
+  height: 6px;
+  background: var(--neon-blue);
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.7; }
+  30% { transform: translateY(-10px); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .monitoring-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .infrastructure-grid {
+    grid-template-columns: 1fr;
+  }
+}

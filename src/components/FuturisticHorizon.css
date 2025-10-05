@@ -1,0 +1,518 @@
+.futuristic-horizon {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  margin-top: 30px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a0f 50%, #8B4513 100%);
+}
+
+.horizon-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.mars-colony {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Cúpulas geodésicas */
+.dome {
+  position: absolute;
+  bottom: 30px;
+  transform-origin: bottom center;
+}
+
+.dome-large {
+  left: 15%;
+  width: 180px;
+  height: 140px;
+}
+
+.dome-medium {
+  width: 130px;
+  height: 100px;
+}
+
+.dome-small {
+  width: 90px;
+  height: 70px;
+}
+
+.dome-structure {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, 
+    rgba(100, 200, 255, 0.15) 0%,
+    rgba(100, 150, 255, 0.25) 50%,
+    rgba(80, 120, 200, 0.35) 100%);
+  border-radius: 50% 50% 0 0;
+  border: 2px solid rgba(100, 180, 255, 0.4);
+  border-bottom: none;
+  overflow: hidden;
+  animation: dome-pulse 4s ease-in-out infinite;
+  box-shadow: 
+    inset 0 -20px 40px rgba(100, 180, 255, 0.2),
+    0 0 30px rgba(100, 180, 255, 0.3);
+}
+
+@keyframes dome-pulse {
+  0%, 100% {
+    opacity: 0.8;
+    box-shadow: inset 0 -20px 40px rgba(100, 180, 255, 0.2),
+                0 0 30px rgba(100, 180, 255, 0.3);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: inset 0 -20px 40px rgba(100, 180, 255, 0.4),
+                0 0 40px rgba(100, 180, 255, 0.5);
+  }
+}
+
+.dome-light {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  height: 30%;
+  background: radial-gradient(circle, rgba(255, 255, 200, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: dome-glow 3s ease-in-out infinite;
+}
+
+@keyframes dome-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.dome-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(0deg, transparent 45%, rgba(255, 255, 255, 0.1) 50%, transparent 55%),
+    linear-gradient(90deg, transparent 45%, rgba(255, 255, 255, 0.1) 50%, transparent 55%);
+  background-size: 20px 20px;
+  opacity: 0.4;
+}
+
+.dome-base {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: linear-gradient(180deg, #2c5aa0 0%, #1a3d6b 100%);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.dome-label {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: bold;
+  color: #4a90e2;
+  text-shadow: 0 0 10px rgba(74, 144, 226, 0.8);
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+
+/* Torres de comunicación */
+.comm-tower {
+  position: absolute;
+  bottom: 30px;
+  width: 8px;
+  height: 120px;
+}
+
+.tower-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #555 0%, #333 100%);
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+.tower-antenna {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 20px;
+  background: linear-gradient(180deg, #ff6b6b 0%, #ff4444 100%);
+  box-shadow: 0 0 10px #ff4444;
+}
+
+.tower-antenna::before,
+.tower-antenna::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  width: 15px;
+  height: 1px;
+  background: #888;
+}
+
+.tower-antenna::before {
+  left: -18px;
+  transform: rotate(-45deg);
+}
+
+.tower-antenna::after {
+  right: -18px;
+  transform: rotate(45deg);
+}
+
+.signal-pulse {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 68, 68, 0.6);
+  border-radius: 50%;
+  animation: signal-animation 2s ease-out infinite;
+}
+
+@keyframes signal-animation {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+  }
+}
+
+/* Paneles solares */
+.solar-array {
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  gap: 5px;
+}
+
+.solar-panel {
+  width: 35px;
+  height: 50px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+  border: 1px solid #4a90e2;
+  position: relative;
+  box-shadow: 0 0 15px rgba(74, 144, 226, 0.4);
+  animation: solar-tilt 8s ease-in-out infinite;
+}
+
+.solar-panel::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background: linear-gradient(135deg, 
+    rgba(74, 144, 226, 0.3) 0%, 
+    rgba(74, 144, 226, 0.1) 50%,
+    rgba(74, 144, 226, 0.3) 100%);
+  background-size: 200% 200%;
+  animation: solar-shine 3s ease-in-out infinite;
+}
+
+@keyframes solar-tilt {
+  0%, 100% { transform: rotateX(15deg); }
+  50% { transform: rotateX(5deg); }
+}
+
+@keyframes solar-shine {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+/* Rover */
+.rover {
+  position: absolute;
+  bottom: 35px;
+  width: 40px;
+  height: 20px;
+  animation: rover-move 20s linear infinite;
+}
+
+.rover-1 {
+  left: -50px;
+}
+
+@keyframes rover-move {
+  0% { left: -50px; }
+  100% { left: calc(100% + 50px); }
+}
+
+.rover-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #888 0%, #555 100%);
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.rover-body::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 15px;
+  height: 8px;
+  background: #4a90e2;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.8);
+}
+
+.rover-wheel {
+  position: absolute;
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  background: #333;
+  border-radius: 50%;
+  border: 2px solid #666;
+}
+
+.rover-wheel:first-of-type {
+  left: 5px;
+}
+
+.rover-wheel:last-of-type {
+  right: 5px;
+}
+
+.dust-trail {
+  position: absolute;
+  bottom: 0;
+  right: 100%;
+  width: 30px;
+  height: 8px;
+  background: linear-gradient(90deg, 
+    rgba(205, 133, 63, 0.3) 0%, 
+    transparent 100%);
+  border-radius: 50%;
+}
+
+/* Tubos de conexión */
+.connection-tubes {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  pointer-events: none;
+}
+
+.connection-tubes path {
+  filter: drop-shadow(0 0 5px rgba(74, 144, 226, 0.6));
+  animation: tube-flow 3s ease-in-out infinite;
+}
+
+@keyframes tube-flow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Luces de aterrizaje */
+.landing-lights {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  height: 100px;
+}
+
+.light-beam {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  height: 60px;
+  background: linear-gradient(180deg, 
+    rgba(100, 200, 255, 0.8) 0%, 
+    rgba(100, 150, 255, 0.4) 50%,
+    transparent 100%);
+  animation: beam-pulse 2s ease-in-out infinite;
+  filter: blur(2px);
+}
+
+.light-beam:nth-child(2) {
+  animation-delay: 0.7s;
+}
+
+.light-beam:nth-child(3) {
+  animation-delay: 1.4s;
+}
+
+@keyframes beam-pulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+/* Suelo marciano */
+.mars-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(180deg, 
+    rgba(139, 69, 19, 0.3) 0%,
+    rgba(101, 67, 33, 0.8) 50%,
+    rgba(80, 50, 20, 1) 100%);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.ground-texture {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(160, 82, 45, 0.3) 0%, transparent 10%),
+    radial-gradient(circle at 60% 70%, rgba(139, 69, 19, 0.4) 0%, transparent 15%),
+    radial-gradient(circle at 90% 40%, rgba(101, 67, 33, 0.3) 0%, transparent 12%);
+  opacity: 0.6;
+}
+
+/* Información overlay */
+.colony-info-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.info-icon {
+  font-size: 32px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.info-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(74, 144, 226, 0.8);
+  letter-spacing: 2px;
+}
+
+.info-subtitle {
+  font-size: 11px;
+  color: #4a90e2;
+  margin-top: 2px;
+}
+
+.colony-stats {
+  display: flex;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 60px;
+}
+
+.stat-icon {
+  font-size: 18px;
+  filter: drop-shadow(0 0 5px rgba(74, 144, 226, 0.8));
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4a90e2;
+  text-shadow: 0 0 10px rgba(74, 144, 226, 0.8);
+}
+
+.stat-label {
+  font-size: 9px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Efectos adicionales */
+@media (max-width: 768px) {
+  .futuristic-horizon {
+    height: 250px;
+  }
+  
+  .colony-info-overlay {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .colony-stats {
+    gap: 8px;
+  }
+  
+  .stat-item {
+    min-width: 50px;
+  }
+}
+
+/* Animación de entrada */
+@keyframes horizon-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.futuristic-horizon {
+  animation: horizon-fade-in 1s ease-out;
+}

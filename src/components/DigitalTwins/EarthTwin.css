@@ -1,0 +1,213 @@
+.earth-twin {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.1), rgba(0, 229, 255, 0.05));
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.earth-twin.active {
+  transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(25, 118, 210, 0.4);
+}
+
+.twin-header {
+  padding: 25px;
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.2), rgba(0, 229, 255, 0.1));
+  border-bottom: 1px solid rgba(25, 118, 210, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.planet-icon {
+  font-size: 32px;
+  animation: earth-rotate 10s linear infinite;
+}
+
+@keyframes earth-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.header-title h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--neon-blue);
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 1px;
+}
+
+.header-title .subtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.connection-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.data-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--neon-green);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.twin-tabs {
+  display: flex;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 15px 20px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--earth-blue);
+  transition: width 0.3s ease;
+}
+
+.tab-btn.active {
+  color: white;
+  background: rgba(25, 118, 210, 0.2);
+}
+
+.tab-btn.active::after {
+  width: 100%;
+}
+
+.tab-btn:hover {
+  color: white;
+  background: rgba(25, 118, 210, 0.1);
+}
+
+.ai-icon {
+  font-size: 16px;
+}
+
+.twin-content {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+.quick-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding: 20px 25px;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metric-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.metric-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.metric-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+}
+
+.air-quality .metric-icon { background: rgba(0, 255, 136, 0.2); }
+.temperature .metric-icon { background: rgba(255, 109, 0, 0.2); }
+.population .metric-icon { background: rgba(0, 229, 255, 0.2); }
+.green .metric-icon { background: rgba(0, 255, 136, 0.2); }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .twin-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .quick-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .tab-btn {
+    font-size: 10px;
+    padding: 12px 15px;
+  }
+}

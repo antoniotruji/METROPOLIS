@@ -1,0 +1,35 @@
+.chart-container {
+  height: 250px;
+  width: 100%;
+}
+
+.time-range-selector {
+  display: flex;
+  gap: var(--spacing-xs);
+  background: var(--gray-100);
+  padding: 4px;
+  border-radius: var(--border-radius);
+}
+
+.time-range-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: none;
+  background: transparent;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-transform: capitalize;
+}
+
+.time-range-btn:hover {
+  background: white;
+  color: var(--gray-900);
+}
+
+.time-range-btn.active {
+  background: var(--primary-blue);
+  color: white;
+}
